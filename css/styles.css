@@ -26,11 +26,20 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
+button {
+  display: block;
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100px;
+  height: 40px;
+  margin: 20px auto;
+}
+
 #container {
-  margin: 50px auto;
+  margin: 0px auto;
   border: 1px solid black;
-  width: 600px;
-  height: 600px;
+  width: 580px;
+  height: 580px;
   display: flex;
   flex-wrap: wrap;
 }
