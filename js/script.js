@@ -9,10 +9,20 @@ for (let i = 0; i < squaresPerSide ** 2; i++)
     "style", 
     `width: ${container.clientWidth / squaresPerSide}px; `
     + `height: ${container.clientHeight / squaresPerSide}px;`
+    + `background-color: ${chooseColor()};`
   );
   newPanel.classList.add("panel");
   newPanel.addEventListener("mouseover", darken);
   container.appendChild(newPanel);
+}
+
+function chooseColor() {
+  maxValue = 256;
+  color = {};
+  for (let val of ["r", "g", "b"]) {
+    color[val] = Math.floor(Math.random() * maxValue);
+  }
+  return `rgba(${color.r}, ${color.g}, ${color.b}, 0.0)`
 }
 
 function darken(event) {
