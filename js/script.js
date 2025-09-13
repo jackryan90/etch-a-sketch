@@ -13,7 +13,7 @@ function getNumPanels(numOldPanels) {
     return numOldPanels;
   }
 
-  const maxPanels = 100;
+  const maxPanels = 50;
   return Math.min(panelsPerSide, maxPanels);
 }
 
@@ -70,6 +70,7 @@ function darken(event) {
   const oldRgba = (
     window
     .getComputedStyle(panel)
+    .backgroundColor
   );
   const oldAlpha = parseFloat(oldRgba.slice(5,-1).split(", ")[3]);
 
