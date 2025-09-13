@@ -3,18 +3,21 @@ const container = document.querySelector("#container");
 const button = document.querySelector("button");
 button.addEventListener("click", resetGrid);
 
-function getNumPanels(numOldPanels) {
-  const defaultPanels = 16;
+function getNumPanelsPerSide(oldPanelsPerSide) {
+  const defaultPanelsPerSide = 16;
   let panelsPerSide = parseInt(
-    prompt("How many panels per side?", defaultPanels)
+    prompt(
+      "How many panels per side?",
+      oldPanelsPerSide > 0 ? oldPanelsPerSide : defaultPanelsPerSide
+    )
   );
 
   if (isNaN(panelsPerSide)) {
-    return numOldPanels;
+    return oldPanelsPerSide;
   }
 
-  const maxPanels = 50;
-  return Math.min(panelsPerSide, maxPanels);
+  const maxPanelsPerSide = 50;
+  return Math.min(panelsPerSide, maxPanelsPerSide);
 }
 
 function deletePanels(oldPanels) {
@@ -40,11 +43,11 @@ function createPanels(container, panelsPerSide) {
 
 function resetGrid() {
   const oldPanels = container.querySelectorAll(":scope > div");
-  const numOldPanels = oldPanels.length;
+  const oldPanelsPerSide = oldPanels.length ** 0.5;
 
-  const panelsPerSide = getNumPanels(numOldPanels);
+  const panelsPerSide = getNumPanelsPerSide(oldPanelsPerSide);
 
-  if (panelsPerSide === numOldPanels) {
+  if (panelsPerSide === oldPanelsPerSide) {
     return;
   }
 
